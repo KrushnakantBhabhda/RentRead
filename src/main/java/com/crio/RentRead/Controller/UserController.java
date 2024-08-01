@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crio.RentRead.Entity.User;
+import com.crio.RentRead.Model.LoginRequest;
 import com.crio.RentRead.Services.AuthService;
 import com.crio.RentRead.Services.UserService;
 
@@ -47,8 +48,8 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestParam String email, @RequestParam String password) {
-        return ResponseEntity.ok(authService.login(email,password));
+    public ResponseEntity<User> login(@RequestBody LoginRequest loginRequest) {
+        return ResponseEntity.ok(authService.login(loginRequest.getEmail(),loginRequest.getPassword()));
         
        
     }

@@ -18,6 +18,7 @@ import com.crio.RentRead.Controller.BookController;
 import com.crio.RentRead.Controller.UserController;
 import com.crio.RentRead.Entity.Book;
 import com.crio.RentRead.Entity.User;
+import com.crio.RentRead.Model.LoginRequest;
 import com.crio.RentRead.Services.AuthService;
 import com.crio.RentRead.Services.BookService;
 import com.crio.RentRead.Services.UserService;
@@ -60,7 +61,8 @@ public class UserControllerTest {
         when(authService.login(email, password)).thenReturn(user);
     
         // Act
-        ResponseEntity<User> response = userController.login(email, password);
+        LoginRequest loginRequest= new LoginRequest(email,password);
+        ResponseEntity<User> response = userController.login(loginRequest);
     
         // Assert
         assertEquals(HttpStatus.OK, response.getStatusCode());
