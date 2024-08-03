@@ -1,37 +1,52 @@
-RentRead is a book rental system developed using Spring Boot. The application supports user registration and login, book management, and rental management functionalities. It implements Basic Authentication with two roles: USER and ADMIN. The project includes comprehensive error handling, logging, unit testing, and is published to GitHub.
+RentRead
+Problem Statement
+Develop a RESTFul API service using Spring Boot to manage an online book rental system while using MySQL to persist the data.
 
 Features
-User Registration and Login
+Book Management: Create, Update, Delete books.
+User Management: Create(Register), Update, Delete users.
+Rental Management: Rent and Return Book. A User can have maximum 2 books.
+Technologies Used
+Spring Boot: Facilitates rapid development and deployment of Java applications.
+Spring Data JPA: Simplifies database operations with ORM (Object-Relational Mapping) capabilities.
+Spring Web: Supports building web applications using the MVC (Model-View-Controller) pattern.
+Spring Validation: Ensures data integrity and validates input requests.
+MySQL: Database management system used for persistent data storage.
+Lombok: Reduces boilerplate code by automatically generating getters, setters, constructors, etc.
+Swagger UI: Provides interactive documentation for RestFul APIs.
+Setup Procedure
+Prerequisites
+JDK 11 or higher installed
+Maven build tool installed
+Docker installed (for MySQL database)
+Steps to Setup
+Clone the repository
 
-Users can register with an email address and password.
-Passwords are encrypted and stored using BCrypt.
-Fields: Email, Password, First Name, Last Name, Role.
-Role defaults to USER if not specified.
-Book Management
+   git clone https://github.com/KrushnakantBhabhda/RentRead
+   cd RentRead
+Start MySQL Database Ensure Docker is running, then execute:
 
-Store and manage book details.
-Fields: Title, Author, Genre, Availability Status.
-Only the ADMIN can create, update, and delete books.
-Rental Management
+docker-compose up -d
+Build and Run the Application
 
-Users can rent books.
-A user can have up to two active rentals at a time.
-Users can return rented books.
-API Endpoints
-Public Endpoints
-POST /register - Register a new user.
-POST /login - Login with email and password.
-Private Endpoints
-Books
+mvn clean install
+mvn spring-boot:run
+Access Swagger UI Open a web browser and navigate to:
 
-GET /books - Get all books (Authenticated users).
-GET /books/{id} - Get a book by ID (Authenticated users).
-POST /books - Create a new book (ADMIN only).
-PUT /books/{id} - Update a book (ADMIN only).
-DELETE /books/{id} - Delete a book (ADMIN only).
-Rentals
+http://localhost:8080/swagger-ui.html
+Swagger UI will display all available endpoints and allow you to interact with the API.
 
-POST /books/{bookId}/rent - Rent a book (Authenticated users).
-POST /books/{bookId}/return - Return a rented book (Authenticated users).
-Logging and Error Handling
-The application includes logging for information and errors, and handles common errors gracefully by returning appropriate HTTP codes (e.g., 404 for user not found).
+Import Postman Collection
+
+Postman-Collection-File
+
+Step-by-Step Procedure
+
+Requirement:
+
+Problem Statement
+
+Usage
+Use Swagger UI to test and explore different endpoints.
+Perform CRUD operations on students, exams, subjects, and contests as needed.
+Integrate additional features or extend functionalities based on project requirements
